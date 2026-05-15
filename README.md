@@ -129,11 +129,11 @@ La aplicación:
 
 ---
 
-## 👨‍💻 Autor
+## 👨‍💻 Integrantes
 
 Wilmer Ramos
--
+--
 Nicolas Chiguano 
--
+--
 Gabriel Escobar
--
+--
