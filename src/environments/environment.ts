@@ -6,10 +6,10 @@ export const environment = {
   // SUPABASE
   // =========================
 
-  supabaseUrl: 'https://kyplcxebxzvtrcgkozwq.supabase.co',
+  supabaseUrl: 'https://cwyybzxjiehvhgmzzxwt.supabase.co',
 
   supabaseKey:
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt5cGxjeGVieHp2dHJjZ2tvendxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgxNzQyODksImV4cCI6MjA5Mzc1MDI4OX0.FXJheZU7GhIVdzoQbHv_R8FKW5Mapbf4c1sDQckiq8w',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN3eXlienhqaWVodmhnbXp6eHd0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgxNzQzOTgsImV4cCI6MjA5Mzc1MDM5OH0.cqwN6Qiq-mdWyRF4OEcSA0mual32yvaYflodW3e6WNw',
 
   // =========================
   // FIREBASE
