@@ -1,13 +1,82 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>camara</ion-title>
+<ion-header translucent="true">
+
+  <ion-toolbar class="custom-toolbar">
+
+    <ion-title>
+      Cámara
+    </ion-title>
+
   </ion-toolbar>
+
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">camara</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content
+  [fullscreen]="true"
+  class="camera-content">
+
+  <div class="container">
+
+    <!-- TÍTULO -->
+
+    <div class="welcome-section">
+
+      <ion-icon
+        name="camera-outline"
+        class="main-icon">
+      </ion-icon>
+
+      <h1>Captura Evidencias</h1>
+
+      <p>
+        Toma una foto o selecciona desde galería
+      </p>
+
+    </div>
+
+    <!-- BOTÓN -->
+
+    <ion-card class="main-card">
+
+      <ion-card-content>
+
+        <ion-button
+          expand="block"
+          class="camera-btn"
+          (click)="addPhoto()">
+
+          <ion-icon
+            name="camera-outline"
+            slot="start">
+          </ion-icon>
+
+          Tomar Foto / Galería
+
+        </ion-button>
+
+      </ion-card-content>
+
+    </ion-card>
+
+    <!-- FOTOS -->
+
+    <div
+      *ngIf="photoService.photos.length > 0">
+
+      <ion-card
+        class="photo-card"
+        *ngFor="
+          let photo of
+          photoService.photos
+        ">
+
+        <ion-img
+          [src]="photo.webviewPath">
+        </ion-img>
+
+      </ion-card>
+
+    </div>
+
+  </div>
+
 </ion-content>
