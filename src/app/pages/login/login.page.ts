@@ -5,18 +5,26 @@ import {
   IonTitle,
   IonContent,
   IonItem,
-  IonLabel,
   IonInput,
   IonButton,
   IonText,
   IonCard,
-  IonCardContent
+  IonCardContent,
+  IonIcon
 } from '@ionic/angular/standalone';
 
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+
 import { SupabaseService } from '../../services/supabase.service';
+
+import { addIcons } from 'ionicons';
+import {
+  mailOutline,
+  lockClosedOutline,
+  gameController
+} from 'ionicons/icons';
 
 @Component({
   selector: 'app-login',
@@ -31,15 +39,16 @@ import { SupabaseService } from '../../services/supabase.service';
     IonTitle,
     IonContent,
     IonItem,
-    IonLabel,
     IonInput,
     IonButton,
     IonText,
     IonCard,
-    IonCardContent
+    IonCardContent,
+    IonIcon
   ]
 })
 export class LoginPage {
+
   email = '';
   password = '';
   mensaje = '';
@@ -47,9 +56,25 @@ export class LoginPage {
   constructor(
     private supabaseService: SupabaseService,
     private router: Router
-  ) {}
+  ) {
+
+    addIcons({
+      mailOutline,
+      lockClosedOutline,
+      gameController
+    });
+
+  }
 
   async login() {
+
+    this.mensaje = '';
+
+    if (!this.email || !this.password) {
+      this.mensaje = 'Completa todos los campos';
+      return;
+    }
+
     const { error } = await this.supabaseService.login(
       this.email,
       this.password
@@ -61,9 +86,18 @@ export class LoginPage {
     }
 
     this.router.navigateByUrl('/home');
+
   }
 
   async register() {
+
+    this.mensaje = '';
+
+    if (!this.email || !this.password) {
+      this.mensaje = 'Completa todos los campos';
+      return;
+    }
+
     const { error } = await this.supabaseService.register(
       this.email,
       this.password
@@ -74,6 +108,8 @@ export class LoginPage {
       return;
     }
 
-    this.mensaje = 'Usuario registrado';
+    this.mensaje = 'Usuario registrado correctamente';
+
   }
+
 }

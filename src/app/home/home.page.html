@@ -1,26 +1,128 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Mi Ubicación App</ion-title>
+<ion-header translucent="true">
+
+  <ion-toolbar class="custom-toolbar">
+
+    <ion-title>
+      Encuesta Gamer
+    </ion-title>
+
   </ion-toolbar>
+
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-button expand="block" (click)="registrarUbicacion()">
-    <ion-icon name="location-outline" slot="start"></ion-icon>
-    Registrar en Supabase
-  </ion-button>
+<ion-content
+  [fullscreen]="true"
+  class="home-content">
 
-  <ion-card *ngIf="latitud">
-    <ion-card-header>
-      <ion-card-title>Coordenadas Capturadas</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p><strong>Lat:</strong> {{ latitud }}</p>
-      <p><strong>Lng:</strong> {{ longitud }}</p>
-      
-      <ion-button expand="block" color="secondary" (click)="abrirMapa()" class="ion-margin-top">
-        Ver en Google Maps
-      </ion-button>
-    </ion-card-content>
-  </ion-card>
+  <div class="container">
+
+    <!-- TÍTULO -->
+
+    <div class="welcome-section">
+
+      <ion-icon
+        name="game-controller-outline"
+        class="main-icon">
+      </ion-icon>
+
+      <h1>Proyecto Apps Móviles</h1>
+
+      <p>
+        Sistema de encuestas gamer
+      </p>
+
+    </div>
+
+    <!-- ENCUESTA -->
+
+    <ion-card
+      class="menu-card"
+      routerLink="/encuesta">
+
+      <ion-card-content>
+
+        <ion-icon
+          name="document-text-outline">
+        </ion-icon>
+
+        <h2>Encuesta</h2>
+
+      </ion-card-content>
+
+    </ion-card>
+
+    <!-- GPS -->
+
+    <ion-card
+      class="menu-card"
+      routerLink="/ubicacion">
+
+      <ion-card-content>
+
+        <ion-icon
+          name="location-outline">
+        </ion-icon>
+
+        <h2>GPS</h2>
+
+      </ion-card-content>
+
+    </ion-card>
+
+    <!-- CÁMARA -->
+
+    <ion-card
+      class="menu-card"
+      routerLink="/camara">
+
+      <ion-card-content>
+
+        <ion-icon
+          name="camera-outline">
+        </ion-icon>
+
+        <h2>Cámara</h2>
+
+      </ion-card-content>
+
+    </ion-card>
+
+    <!-- API JUEGOS -->
+
+    <ion-card
+      class="menu-card"
+      routerLink="/api-juegos">
+
+      <ion-card-content>
+
+        <ion-icon
+          name="game-controller-outline">
+        </ion-icon>
+
+        <h2>API Juegos</h2>
+
+      </ion-card-content>
+
+    </ion-card>
+
+    <!-- REGISTROS -->
+
+    <ion-card
+      class="menu-card"
+      routerLink="/registros">
+
+      <ion-card-content>
+
+        <ion-icon
+          name="albums-outline">
+        </ion-icon>
+
+        <h2>Registros</h2>
+
+      </ion-card-content>
+
+    </ion-card>
+
+  </div>
+
 </ion-content>
