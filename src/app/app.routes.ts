@@ -5,28 +5,44 @@ export const routes: Routes = [
 
   {
     path: 'login',
-    loadComponent: () => import('./pages/login/login.page').then( m => m.LoginPage)
+    loadComponent: () =>
+      import('./pages/login/login.page').then(m => m.LoginPage)
   },
-    {
+
+  {
     path: 'home',
-    loadComponent: () => import('./home/home.page').then(m => m.HomePage)
+    loadComponent: () =>
+      import('./home/home.page').then(m => m.HomePage)
   },
+
+  {
+    path: 'games',
+    loadComponent: () =>
+      import('./pages/games/games.page').then(m => m.GamesPage)
+  },
+
   {
     path: 'encuesta',
-    loadComponent: () => import('./pages/encuesta/encuesta.page').then( m => m.EncuestaPage)
+    loadComponent: () =>
+      import('./pages/encuesta/encuesta.page').then(m => m.EncuestaPage)
   },
+
   {
     path: 'camara',
-    loadComponent: () => import('./pages/camara/camara.page').then( m => m.CamaraPage)
+    loadComponent: () =>
+      import('./pages/camara/camara.page').then(m => m.CamaraPage)
   },
- 
+
   {
     path: 'registros',
-    loadComponent: () => import('./pages/registros/registros.page').then( m => m.RegistrosPage)
+    loadComponent: () =>
+      import('./pages/registros/registros.page').then(m => m.RegistrosPage)
   },
+
   {
     path: 'ubicacion',
-    loadComponent: () => import('./pages/ubicacion/ubicacion.page').then( m => m.UbicacionPage)
-  },
+    loadComponent: () =>
+      import('./pages/ubicacion/ubicacion.page').then(m => m.UbicacionPage)
+  }
 
 ];
