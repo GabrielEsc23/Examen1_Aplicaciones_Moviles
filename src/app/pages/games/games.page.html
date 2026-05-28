@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Juegos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngFor="let game of games">
+
+    <img [src]="game.thumbnail">
+
+    <ion-card-header>
+      <ion-card-title>
+        {{ game.title }}
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <p>
+        <strong>Género:</strong>
+        {{ game.genre }}
+      </p>
+
+      <p>
+        <strong>Plataforma:</strong>
+        {{ game.platform }}
+      </p>
+
+      <p>
+        {{ game.short_description }}
+      </p>
+
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>
