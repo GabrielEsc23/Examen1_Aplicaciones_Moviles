@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import {
 
@@ -16,7 +16,7 @@ import {
 
 import { CommonModule } from '@angular/common';
 
-// IMPORT CORRECTO
+// SERVICIO FOTO
 import { PhotoService }
 from '../../services/photo';
 
@@ -56,12 +56,14 @@ import {
 
 })
 
-export class CamaraPage {
+export class CamaraPage
+implements OnInit {
 
   constructor(
     public photoService: PhotoService
   ) {
 
+    // ICONOS
     addIcons({
 
       'camera-outline':
@@ -74,15 +76,25 @@ export class CamaraPage {
 
   }
 
+  // =========================
+  // CARGAR FOTOS GUARDADAS
+  // =========================
+
   async ngOnInit() {
 
-    await this.photoService.loadPhotos();
+    await this.photoService
+      .loadPhotos();
 
   }
 
-  addPhoto() {
+  // =========================
+  // TOMAR FOTO
+  // =========================
 
-    this.photoService.addNewPhoto();
+  async addPhoto() {
+
+    await this.photoService
+      .addNewPhoto();
 
   }
 
