@@ -1,0 +1,152 @@
+<ion-header translucent="true">
+
+  <ion-toolbar class="custom-toolbar">
+
+    <ion-title>
+      GPS Campus
+    </ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content
+  [fullscreen]="true"
+  class="home-content">
+
+  <div class="container">
+
+    <!-- TÍTULO -->
+
+    <div class="welcome-section">
+
+      <ion-icon
+        name="location-outline"
+        class="main-icon">
+      </ion-icon>
+
+      <h1>Geolocalización</h1>
+
+      <p>
+        Guarda tu ubicación actual
+      </p>
+
+    </div>
+
+    <!-- BOTÓN -->
+
+    <ion-card class="main-card">
+
+      <ion-card-content>
+
+        <ion-button
+          expand="block"
+          class="location-btn"
+          (click)="registrarUbicacion()">
+
+          <ion-icon
+            name="location-outline"
+            slot="start">
+          </ion-icon>
+
+          Registrar Ubicación
+
+        </ion-button>
+
+      </ion-card-content>
+
+    </ion-card>
+
+    <!-- RESULTADO -->
+
+    <ion-card
+      *ngIf="latitud"
+      class="coords-card">
+
+      <ion-card-header>
+
+        <ion-card-title>
+          Coordenadas Capturadas
+        </ion-card-title>
+
+      </ion-card-header>
+
+      <ion-card-content>
+
+        <!-- LAT -->
+
+        <div class="coord-item">
+
+          <ion-icon
+            name="navigate-outline">
+          </ion-icon>
+
+          <div>
+
+            <h3>Latitud</h3>
+
+            <p>{{ latitud }}</p>
+
+          </div>
+
+        </div>
+
+        <!-- LNG -->
+
+        <div class="coord-item">
+
+          <ion-icon
+            name="map-outline">
+          </ion-icon>
+
+          <div>
+
+            <h3>Longitud</h3>
+
+            <p>{{ longitud }}</p>
+
+          </div>
+
+        </div>
+
+        <!-- LUGAR -->
+
+        <div class="coord-item">
+
+          <ion-icon
+            name="business-outline">
+          </ion-icon>
+
+          <div>
+
+            <h3>Lugar Aproximado</h3>
+
+            <p>{{ lugar }}</p>
+
+          </div>
+
+        </div>
+
+        <!-- BOTÓN -->
+
+        <ion-button
+          expand="block"
+          class="maps-btn ion-margin-top"
+          (click)="abrirMapa()">
+
+          <ion-icon
+            name="map-outline"
+            slot="start">
+          </ion-icon>
+
+          Ver en Google Maps
+
+        </ion-button>
+
+      </ion-card-content>
+
+    </ion-card>
+
+  </div>
+
+</ion-content>
