@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
+import { FormsModule } from '@angular/forms';
 
 import { GameService } from '../../services/game';
 
@@ -9,28 +10,52 @@ import { GameService } from '../../services/game';
   templateUrl: './games.page.html',
   styleUrls: ['./games.page.scss'],
   standalone: true,
-  imports: [CommonModule, IonicModule]
+  imports: [
+    CommonModule,
+    IonicModule,
+    FormsModule
+  ]
 })
-export class GamesPage implements OnInit {
+export class GamesPage {
 
-  games: any[] = [];
+  gameName: string = '';
+
+  filteredGames: any[] = [];
+
+  selectedGame: any;
 
   constructor(private gameService: GameService) {}
 
-  ngOnInit() {
-    this.loadGames();
-  }
+  searchGame() {
 
-  loadGames() {
     this.gameService.getGames().subscribe({
+
       next: (data) => {
-        console.log(data);
-        this.games = data;
+
+        this.filteredGames = data.filter((game: any) =>
+
+          game.title
+            .toLowerCase()
+            .includes(this.gameName.toLowerCase())
+
+        );
+
       },
+
       error: (err) => {
         console.log(err);
       }
+
     });
+
+  }
+
+  selectGame(game: any) {
+
+    this.selectedGame = game;
+
+    console.log('Juego seleccionado:', game);
+
   }
 
 }

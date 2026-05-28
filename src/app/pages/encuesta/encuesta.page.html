@@ -1,13 +1,153 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>encuesta</ion-title>
+<ion-header>
+
+  <ion-toolbar class="custom-toolbar">
+
+    <ion-title>
+      Encuesta
+    </ion-title>
+
   </ion-toolbar>
+
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">encuesta</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="games-content">
+
+  <div class="container">
+
+    <div class="title-section">
+
+      <h1>Encuesta Gamer</h1>
+
+      <p>
+        Registra videojuegos favoritos
+      </p>
+
+    </div>
+
+    <!-- FORMULARIO -->
+
+    <ion-card class="search-card">
+
+      <ion-card-content>
+
+        <ion-input
+          label="Alias o nombre"
+          labelPlacement="floating"
+          [(ngModel)]="survey.alias">
+        </ion-input>
+
+        <br>
+
+        <ion-input
+          type="number"
+          label="Edad"
+          labelPlacement="floating"
+          [(ngModel)]="survey.edad">
+        </ion-input>
+
+        <br>
+
+        <ion-select
+          label="Rol"
+          labelPlacement="floating"
+          [(ngModel)]="survey.rol">
+
+          <ion-select-option value="Estudiante">
+            Estudiante
+          </ion-select-option>
+
+          <ion-select-option value="Docente">
+            Docente
+          </ion-select-option>
+
+          <ion-select-option value="Administrativo">
+            Administrativo
+          </ion-select-option>
+
+          <ion-select-option value="Visitante">
+            Visitante
+          </ion-select-option>
+
+        </ion-select>
+
+        <br><br>
+
+        <ion-textarea
+          label="Comentario"
+          labelPlacement="floating"
+          [(ngModel)]="survey.comentario">
+        </ion-textarea>
+
+      </ion-card-content>
+
+    </ion-card>
+
+    <!-- BUSQUEDA -->
+
+    <ion-card class="search-card">
+
+      <ion-card-content>
+
+        <ion-input
+          label="Videojuego favorito"
+          labelPlacement="floating"
+          [(ngModel)]="gameName">
+        </ion-input>
+
+        <br>
+
+        <ion-button
+          expand="block"
+          (click)="searchGame()">
+
+          Buscar Juego
+
+        </ion-button>
+
+      </ion-card-content>
+
+    </ion-card>
+
+    <!-- RESULTADOS -->
+
+    <ion-card
+      class="game-card"
+      *ngFor="let game of filteredGames">
+
+      <img [src]="game.thumbnail">
+
+      <ion-card-header>
+
+        <ion-card-title>
+          {{ game.title }}
+        </ion-card-title>
+
+      </ion-card-header>
+
+      <ion-card-content>
+
+        <p>
+          <strong>Género:</strong>
+          {{ game.genre }}
+        </p>
+
+        <p>
+          <strong>Plataforma:</strong>
+          {{ game.platform }}
+        </p>
+
+        <ion-button
+          expand="block"
+          (click)="selectGame(game)">
+
+          Seleccionar
+
+        </ion-button>
+
+      </ion-card-content>
+
+    </ion-card>
+
+  </div>
+
 </ion-content>
