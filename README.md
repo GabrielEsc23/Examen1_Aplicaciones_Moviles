@@ -268,7 +268,7 @@ Agregar captura de publicaciones o registros.
 # 👥 Integrantes
 
 * Gabriel Escobar
-* Nombre compañero
+* Nicolás Chiguano
 
 ---
 
