@@ -1,6 +1,6 @@
 <ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar class="custom-toolbar">
-    <ion-title>Registros</ion-title>
+    <ion-title>Publicaciones</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,8 +14,8 @@
     
     <div class="welcome-section">
       <ion-icon name="game-controller-outline" class="main-icon"></ion-icon>
-      <h1>Publicaciones</h1>
-      <p>Historial de encuestas realizadas</p>
+      <h1>Historial Gamer</h1>
+      <p>Encuestas realizadas con geolocalización integrada</p>
     </div>
 
     <div *ngIf="registros.length === 0" class="ion-text-center">
@@ -24,10 +24,10 @@
 
     <ion-card *ngFor="let item of registros" class="registro-card">
       
-      <ion-img *ngIf="item.imagen" [src]="item.imagen"></ion-img>
+      <ion-img *ngIf="item.imagen_url" [src]="item.imagen_url" class="game-img-header"></ion-img>
       
       <ion-card-header>
-        <ion-card-subtitle>
+        <ion-card-subtitle class="date-subtitle">
           <ion-icon name="calendar-outline"></ion-icon> 
           {{ item.fecha | date:'dd/MM/yyyy HH:mm' }}
         </ion-card-subtitle>
@@ -41,14 +41,21 @@
           <ion-icon name="person-outline" slot="start"></ion-icon>
           <ion-label>
             <h3>{{ item.alias }}</h3>
-            <p>Jugador</p>
+            <p>{{ item.rol }}</p>
           </ion-label>
         </ion-item>
 
         <ion-item lines="none" class="info-item" *ngIf="item.ubicacion">
-          <ion-icon name="location-outline" slot="start"></ion-icon>
+          <ion-icon name="location-outline" slot="start" color="danger"></ion-icon>
           <ion-label class="ion-text-wrap">
-            <p>{{ item.ubicacion }}</p>
+            <h3 style="color: #60a5fa; font-weight: bold;">{{ item.ubicacion }}</h3>
+            
+            <p *ngIf="item.latitud && item.longitud" style="display: flex; align-items: center; gap: 5px; margin-top: 4px;">
+              <ion-icon name="navigate-outline" style="font-size: 14px; color: #dbeafe;"></ion-icon>
+              <span style="font-size: 12px; color: #dbeafe;">
+                Lat: {{ item.latitud | number:'1.4-4' }} | Lng: {{ item.longitud | number:'1.4-4' }}
+              </span>
+            </p>
           </ion-label>
         </ion-item>
 
@@ -56,9 +63,14 @@
           <p class="comentario-text">"{{ item.comentario }}"</p>
         </div>
 
-        <ion-badge class="plataforma-badge">
-          {{ item.plataforma }}
-        </ion-badge>
+        <div class="ion-margin-top">
+          <ion-badge class="plataforma-badge" *ngIf="item.plataforma">
+            {{ item.plataforma }}
+          </ion-badge>
+          <ion-badge color="light" class="ion-margin-start" *ngIf="item.genero">
+            {{ item.genero }}
+          </ion-badge>
+        </div>
       </ion-card-content>
     </ion-card>
 

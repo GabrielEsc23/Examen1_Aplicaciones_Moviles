@@ -10,11 +10,8 @@ import {
 import { FirebaseService } from '../../services/firebase.service';
 import { addIcons } from 'ionicons';
 import { 
-  gameControllerOutline, 
-  personOutline, 
-  locationOutline, 
-  calendarOutline, 
-  chatbubbleOutline 
+  gameControllerOutline, personOutline, locationOutline, 
+  calendarOutline, chatbubbleOutline, navigateOutline, mapOutline
 } from 'ionicons/icons';
 
 @Component({
@@ -33,25 +30,22 @@ export class RegistrosPage {
 
   constructor(private firebaseService: FirebaseService) {
     addIcons({ 
-      gameControllerOutline, 
-      personOutline, 
-      locationOutline, 
-      calendarOutline, 
-      chatbubbleOutline 
+      gameControllerOutline, personOutline, locationOutline, 
+      calendarOutline, chatbubbleOutline, navigateOutline, mapOutline 
     });
   }
 
-  // Se ejecuta cada vez que el usuario entra a la pestaña
   async ionViewWillEnter() {
     await this.obtenerDatos();
   }
 
   async obtenerDatos() {
+    // Traemos únicamente las encuestas, las cuales ya contienen la ubicación acoplada
     try {
       this.registros = await this.firebaseService.getEncuestas();
-      console.log("Datos cargados:", this.registros);
     } catch (error) {
-      console.error("Error al obtener datos:", error);
+      console.error("Error al mapear registros unificados:", error);
+      this.registros = [];
     }
   }
 
@@ -59,4 +53,4 @@ export class RegistrosPage {
     await this.obtenerDatos();
     event.target.complete();
   }
-} 
+}

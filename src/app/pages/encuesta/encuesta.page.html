@@ -1,273 +1,108 @@
 <ion-header translucent="true">
-
   <ion-toolbar class="custom-toolbar">
-
-    <ion-title>
-      Encuesta Gamer
-    </ion-title>
-
+    <ion-title>Encuesta Gamer</ion-title>
   </ion-toolbar>
-
 </ion-header>
 
-<ion-content
-  [fullscreen]="true"
-  class="encuesta-content">
-
+<ion-content [fullscreen]="true" class="encuesta-content">
   <div class="container">
 
-    <!-- TÍTULO -->
-
     <div class="welcome-section">
-
-      <ion-icon
-        name="game-controller-outline"
-        class="main-icon">
-      </ion-icon>
-
+      <ion-icon name="game-controller-outline" class="main-icon"></ion-icon>
       <h1>Formulario Gamer</h1>
-
-      <p>
-        Registro de encuesta de videojuegos
-      </p>
-
+      <p>Registro de encuesta de videojuegos</p>
     </div>
 
-    <!-- FORMULARIO -->
-
     <ion-card class="form-card">
-
       <ion-card-content>
 
-        <!-- NOMBRE -->
-
-        <ion-item class="custom-item">
-
-          <ion-icon
-            name="person-outline"
-            slot="start">
-          </ion-icon>
-
-          <ion-input
-            label="Nombre o Alias"
-            labelPlacement="floating"
-            [(ngModel)]="encuesta.alias">
-          </ion-input>
-
+        <ion-item class="custom-item" *ngIf="encuesta.ubicacion">
+          <ion-icon name="location-outline" slot="start"></ion-icon>
+          <ion-input label="Ubicación Detectada" labelPlacement="floating" [(ngModel)]="encuesta.ubicacion" [readonly]="true"></ion-input>
         </ion-item>
 
-        <!-- EDAD -->
+        <ion-item class="custom-item">
+          <ion-icon name="person-outline" slot="start"></ion-icon>
+          <ion-input label="Nombre o Alias" labelPlacement="floating" [(ngModel)]="encuesta.alias"></ion-input>
+        </ion-item>
 
         <ion-item class="custom-item">
-
-          <ion-icon
-            name="calendar-outline"
-            slot="start">
-          </ion-icon>
-
-          <ion-select
-            label="Rango de Edad"
-            labelPlacement="floating"
-            interface="popover"
-            [(ngModel)]="encuesta.edad">
-
-            <ion-select-option value="10-15">
-              10 - 15
-            </ion-select-option>
-
-            <ion-select-option value="16-20">
-              16 - 20
-            </ion-select-option>
-
-            <ion-select-option value="21-25">
-              21 - 25
-            </ion-select-option>
-
-            <ion-select-option value="26+">
-              26+
-            </ion-select-option>
-
+          <ion-icon name="calendar-outline" slot="start"></ion-icon>
+          <ion-select label="Rango de Edad" labelPlacement="floating" interface="popover" [(ngModel)]="encuesta.edad">
+            <ion-select-option value="10-15">10 - 15</ion-select-option>
+            <ion-select-option value="16-20">16 - 20</ion-select-option>
+            <ion-select-option value="21-25">21 - 25</ion-select-option>
+            <ion-select-option value="26+">26+</ion-select-option>
           </ion-select>
-
         </ion-item>
 
-        <!-- ROL -->
-
         <ion-item class="custom-item">
-
-          <ion-icon
-            name="people-outline"
-            slot="start">
-          </ion-icon>
-
-          <ion-select
-            label="Rol"
-            labelPlacement="floating"
-            interface="popover"
-            [(ngModel)]="encuesta.rol">
-
-            <ion-select-option value="Estudiante">
-              Estudiante
-            </ion-select-option>
-
-            <ion-select-option value="Docente">
-              Docente
-            </ion-select-option>
-
-            <ion-select-option value="Administrativo">
-              Administrativo
-            </ion-select-option>
-
-            <ion-select-option value="Visitante">
-              Visitante
-            </ion-select-option>
-
+          <ion-icon name="people-outline" slot="start"></ion-icon>
+          <ion-select label="Rol" labelPlacement="floating" interface="popover" [(ngModel)]="encuesta.rol">
+            <ion-select-option value="Estudiante">Estudiante</ion-select-option>
+            <ion-select-option value="Docente">Docente</ion-select-option>
+            <ion-select-option value="Administrativo">Administrativo</ion-select-option>
+            <ion-select-option value="Visitante">Visitante</ion-select-option>
           </ion-select>
-
         </ion-item>
 
-        <!-- VIDEOJUEGO -->
-
         <ion-item class="custom-item">
-
-          <ion-icon
-            name="game-controller-outline"
-            slot="start">
-          </ion-icon>
-
-          <ion-input
-            label="Videojuego Favorito"
-            labelPlacement="floating"
-            [(ngModel)]="encuesta.videojuego">
-          </ion-input>
-
+          <ion-icon name="search-outline" slot="start"></ion-icon>
+          <ion-input label="Buscar Videojuego Favorito" labelPlacement="floating" [(ngModel)]="busqueda" (ionInput)="buscarJuegoAPI()"></ion-input>
         </ion-item>
 
-        <!-- PLATAFORMA -->
+        <ion-list *ngIf="juegosSugeridos.length > 0" class="sugerencias-list">
+          <ion-item button *ngFor="let juego of juegosSugeridos" (click)="seleccionarJuego(juego)">
+            <ion-thumbnail slot="start">
+              <img [src]="juego.thumbnail" />
+            </ion-thumbnail>
+            <ion-label>
+              <h3>{{ juego.title }}</h3>
+              <p>{{ juego.genre }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+
+        <div *ngIf="encuesta.imagen_url" class="selected-preview ion-padding">
+          <img [src]="encuesta.imagen_url" />
+          <p>Seleccionado: <strong>{{ encuesta.videojuego }}</strong></p>
+        </div>
 
         <ion-item class="custom-item">
-
-          <ion-icon
-            name="desktop-outline"
-            slot="start">
-          </ion-icon>
-
-          <ion-select
-            label="Plataforma"
-            labelPlacement="floating"
-            interface="popover"
-            [(ngModel)]="encuesta.plataforma">
-
-            <ion-select-option value="Móvil">
-              Móvil
-            </ion-select-option>
-
-            <ion-select-option value="Consola">
-              Consola
-            </ion-select-option>
-
-            <ion-select-option value="PC">
-              PC
-            </ion-select-option>
-
-            <ion-select-option value="Navegador">
-              Navegador
-            </ion-select-option>
-
+          <ion-icon name="desktop-outline" slot="start"></ion-icon>
+          <ion-select label="Plataforma" labelPlacement="floating" interface="popover" [(ngModel)]="encuesta.plataforma">
+            <ion-select-option value="Móvil">Móvil</ion-select-option>
+            <ion-select-option value="Consola">Consola</ion-select-option>
+            <ion-select-option value="PC">PC</ion-select-option>
+            <ion-select-option value="Navegador">Navegador</ion-select-option>
           </ion-select>
-
         </ion-item>
-
-        <!-- GÉNERO -->
 
         <ion-item class="custom-item">
-
-          <ion-icon
-            name="sparkles-outline"
-            slot="start">
-          </ion-icon>
-
-          <ion-select
-            label="Género Favorito"
-            labelPlacement="floating"
-            interface="popover"
-            [(ngModel)]="encuesta.genero">
-
-            <ion-select-option value="Acción">
-              Acción
-            </ion-select-option>
-
-            <ion-select-option value="Aventura">
-              Aventura
-            </ion-select-option>
-
-            <ion-select-option value="Deportes">
-              Deportes
-            </ion-select-option>
-
-            <ion-select-option value="Estrategia">
-              Estrategia
-            </ion-select-option>
-
-            <ion-select-option value="RPG">
-              RPG
-            </ion-select-option>
-
-            <ion-select-option value="Terror">
-              Terror
-            </ion-select-option>
-
-            <ion-select-option value="Simulación">
-              Simulación
-            </ion-select-option>
-
-            <ion-select-option value="Otro">
-              Otro
-            </ion-select-option>
-
+          <ion-icon name="sparkles-outline" slot="start"></ion-icon>
+          <ion-select label="Género Favorito" labelPlacement="floating" interface="popover" [(ngModel)]="encuesta.genero">
+            <ion-select-option value="Acción">Acción</ion-select-option>
+            <ion-select-option value="Aventura">Aventura</ion-select-option>
+            <ion-select-option value="Deportes">Deportes</ion-select-option>
+            <ion-select-option value="Estrategia">Estrategia</ion-select-option>
+            <ion-select-option value="RPG">RPG</ion-select-option>
+            <ion-select-option value="Terror">Terror</ion-select-option>
+            <ion-select-option value="Simulación">Simulación</ion-select-option>
+            <ion-select-option value="Otro">Otro</ion-select-option>
           </ion-select>
-
         </ion-item>
-
-        <!-- COMENTARIO -->
 
         <ion-item class="custom-item textarea-item">
-
-          <ion-icon
-            name="chatbubble-outline"
-            slot="start">
-          </ion-icon>
-
-          <ion-textarea
-            label="Comentario Breve"
-            labelPlacement="floating"
-            rows="4"
-            autoGrow="true"
-            [(ngModel)]="encuesta.comentario">
-          </ion-textarea>
-
+          <ion-icon name="chatbubble-outline" slot="start"></ion-icon>
+          <ion-textarea label="Comentario Breve" labelPlacement="floating" rows="4" autoGrow="true" [(ngModel)]="encuesta.comentario"></ion-textarea>
         </ion-item>
 
-        <!-- BOTÓN -->
-
-        <ion-button
-          expand="block"
-          class="guardar-btn"
-          (click)="guardarEncuesta()">
-
-          <ion-icon
-            name="save-outline"
-            slot="start">
-          </ion-icon>
-
+        <ion-button expand="block" class="guardar-btn" (click)="guardarEncuesta()">
+          <ion-icon name="save-outline" slot="start"></ion-icon>
           Guardar Encuesta
-
         </ion-button>
 
       </ion-card-content>
-
     </ion-card>
-
   </div>
-
 </ion-content>

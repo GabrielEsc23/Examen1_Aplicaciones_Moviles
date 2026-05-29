@@ -1,126 +1,61 @@
-<ion-header translucent="true">
-
+<ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar class="custom-toolbar">
-
     <ion-title>
       Encuesta Gamer
     </ion-title>
-
   </ion-toolbar>
-
 </ion-header>
 
-<ion-content
-  [fullscreen]="true"
-  class="home-content">
+<ion-content [fullscreen]="true" class="home-content">
 
   <div class="container">
 
-    <!-- TÍTULO -->
-
     <div class="welcome-section">
-
-      <ion-icon
-        name="game-controller-outline"
-        class="main-icon">
-      </ion-icon>
-
+      <ion-icon name="game-controller-outline" class="main-icon"></ion-icon>
       <h1>Proyecto Apps Móviles</h1>
-
-      <p>
-        Sistema de encuestas gamer
-      </p>
-
+      <p>Sistema de encuestas gamer</p>
     </div>
 
-    <!-- ENCUESTA -->
-
-    <ion-card
-      class="menu-card"
-      routerLink="/encuesta">
-
+    <ion-card class="menu-card" routerLink="/ubicacion">
       <ion-card-content>
-
-        <ion-icon
-          name="document-text-outline">
-        </ion-icon>
-
-        <h2>Encuesta</h2>
-
-      </ion-card-content>
-
-    </ion-card>
-
-    <!-- GPS -->
-
-    <ion-card
-      class="menu-card"
-      routerLink="/ubicacion">
-
-      <ion-card-content>
-
-        <ion-icon
-          name="location-outline">
-        </ion-icon>
-
+        <ion-icon name="location-outline"></ion-icon>
         <h2>GPS</h2>
-
       </ion-card-content>
-
     </ion-card>
 
-    <!-- CÁMARA -->
-
-    <ion-card
-      class="menu-card"
-      routerLink="/camara">
-
+    <ion-card class="menu-card" routerLink="/encuesta">
       <ion-card-content>
+        <ion-icon name="document-text-outline"></ion-icon>
+        <h2>Encuesta</h2>
+      </ion-card-content>
+    </ion-card>
 
-        <ion-icon
-          name="camera-outline">
-        </ion-icon>
-
+    <ion-card class="menu-card" routerLink="/camara">
+      <ion-card-content>
+        <ion-icon name="camera-outline"></ion-icon>
         <h2>Cámara</h2>
-
       </ion-card-content>
-
     </ion-card>
 
-    <!-- API JUEGOS -->
-
-    <ion-card
-      class="menu-card"
-      routerLink="/games">
-
+    <ion-card class="menu-card" routerLink="/games">
       <ion-card-content>
-
-        <ion-icon
-          name="game-controller-outline">
-        </ion-icon>
-
+        <ion-icon name="game-controller-outline"></ion-icon>
         <h2>API Juegos</h2>
-
       </ion-card-content>
-
     </ion-card>
 
-    <!-- REGISTROS -->
-
-    <ion-card
-      class="menu-card"
-      routerLink="/registros">
-
+    <ion-card class="menu-card" routerLink="/registros">
       <ion-card-content>
-
-        <ion-icon
-          name="albums-outline">
-        </ion-icon>
-
+        <ion-icon name="albums-outline"></ion-icon>
         <h2>Registros</h2>
-
       </ion-card-content>
+    </ion-card>
 
+    <ion-card class="menu-card logout-card" (click)="logout()">
+      <ion-card-content>
+        <ion-icon name="log-out-outline" color="danger"></ion-icon>
+        <h2 style="color: #ff4961;">Cerrar Sesión</h2>
+      </ion-card-content>
     </ion-card>
 
   </div>
