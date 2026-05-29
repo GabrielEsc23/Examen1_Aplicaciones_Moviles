@@ -205,9 +205,7 @@ npx cap open android
 
 Agregar captura del Splash Screen.
 
-```md
-![Splash](ruta-imagen)
-```
+![Splash Screen](https://raw.githubusercontent.com/GabrielEsc23/Examen1_Aplicaciones_Moviles/main/Capturas_APP_Examen/splash-screen.jpg)
 
 ---
 
@@ -215,9 +213,7 @@ Agregar captura del Splash Screen.
 
 Agregar captura de la pantalla de login.
 
-```md
-![Login](ruta-imagen)
-```
+![Autenticacion](https://raw.githubusercontent.com/GabrielEsc23/Examen1_Aplicaciones_Moviles/main/Capturas_APP_Examen/autenticacion.jpg)
 
 ---
 
@@ -225,9 +221,7 @@ Agregar captura de la pantalla de login.
 
 Agregar captura de la pantalla principal.
 
-```md
-![Home](ruta-imagen)
-```
+![Pantalla Principal](https://raw.githubusercontent.com/GabrielEsc23/Examen1_Aplicaciones_Moviles/main/Capturas_APP_Examen/pantalla-principal.jpg)
 
 ---
 
@@ -235,9 +229,7 @@ Agregar captura de la pantalla principal.
 
 Agregar captura de geolocalización.
 
-```md
-![GPS](ruta-imagen)
-```
+![GPS](https://raw.githubusercontent.com/GabrielEsc23/Examen1_Aplicaciones_Moviles/main/Capturas_APP_Examen/gps.jpg)
 
 ---
 
@@ -245,9 +237,7 @@ Agregar captura de geolocalización.
 
 Agregar captura del formulario.
 
-```md
-![Formulario](ruta-imagen)
-```
+![Formulario](https://raw.githubusercontent.com/GabrielEsc23/Examen1_Aplicaciones_Moviles/main/Capturas_APP_Examen/formulario.jpg)
 
 ---
 
@@ -255,9 +245,7 @@ Agregar captura del formulario.
 
 Agregar captura de cámara.
 
-```md
-![Camara](ruta-imagen)
-```
+
 
 ---
 
@@ -265,9 +253,7 @@ Agregar captura de cámara.
 
 Agregar captura del consumo de API.
 
-```md
-![Videojuegos](ruta-imagen)
-```
+![Videojuegos](https://raw.githubusercontent.com/GabrielEsc23/Examen1_Aplicaciones_Moviles/main/Capturas_APP_Examen/videojuegos.jpg)
 
 ---
 
@@ -275,9 +261,7 @@ Agregar captura del consumo de API.
 
 Agregar captura de publicaciones o registros.
 
-```md
-![Registros](ruta-imagen)
-```
+![Registros](https://raw.githubusercontent.com/GabrielEsc23/Examen1_Aplicaciones_Moviles/main/Capturas_APP_Examen/registrojpg.jpg)
 
 ---
 
