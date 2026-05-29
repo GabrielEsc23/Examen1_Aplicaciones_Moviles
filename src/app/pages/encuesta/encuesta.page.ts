@@ -1,12 +1,22 @@
 import { Component } from '@angular/core';
+import {
+  IonicModule,
+  ToastController
+} from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { FirebaseService } from '../../services/firebase.service';
+import { addIcons } from 'ionicons';
 import {
-  IonicModule
-} from '@ionic/angular';
-
-import { GameService } from '../../services/game';
+  personOutline,
+  calendarOutline,
+  peopleOutline,
+  gameControllerOutline,
+  desktopOutline,
+  sparklesOutline,
+  chatbubbleOutline,
+  saveOutline // <--- IMPORTANTE: Faltaba este
+} from 'ionicons/icons';
 
 @Component({
   selector: 'app-encuesta',
@@ -14,92 +24,83 @@ import { GameService } from '../../services/game';
   styleUrls: ['./encuesta.page.scss'],
   standalone: true,
   imports: [
+    IonicModule,
     CommonModule,
-    FormsModule,
-    IonicModule
+    FormsModule
   ]
 })
 export class EncuestaPage {
-
-  survey = {
-
+  encuesta = {
     alias: '',
     edad: '',
     rol: '',
+    videojuego: '',
+    plataforma: '',
+    genero: '',
     comentario: ''
-
   };
 
-  gameName: string = '';
-
-  filteredGames: any[] = [];
-
-  selectedGame: any;
-
   constructor(
-    private gameService: GameService
-  ) {}
+    private toastController: ToastController,
+    private firebaseService: FirebaseService
+  ) {
+    // Registro de iconos para que Ionic pueda renderizarlos
+    addIcons({
+      'person-outline': personOutline,
+      'calendar-outline': calendarOutline,
+      'people-outline': peopleOutline,
+      'game-controller-outline': gameControllerOutline,
+      'desktop-outline': desktopOutline,
+      'sparkles-outline': sparklesOutline,
+      'chatbubble-outline': chatbubbleOutline,
+      'save-outline': saveOutline // <--- IMPORTANTE: Faltaba este
+    });
+  }
 
-  searchGame() {
+  // =========================
+  // GUARDAR ENCUESTA
+  // =========================
+  async guardarEncuesta() {
+    console.log('Datos a enviar:', this.encuesta); // Debug en consola
 
-    this.gameService.getGames().subscribe({
+    try {
+      const data = {
+        ...this.encuesta,
+        fecha: new Date().toISOString()
+      };
 
-      next: (data) => {
+      const resultado = await this.firebaseService.guardarEncuesta(data);
 
-        this.filteredGames = data.filter((game: any) =>
+      if (resultado.success) {
+        const toast = await this.toastController.create({
+          message: 'Encuesta guardada correctamente en Firebase',
+          duration: 2000,
+          color: 'success'
+        });
+        await toast.present();
 
-          game.title
-            .toLowerCase()
-            .includes(this.gameName.toLowerCase())
-
-        );
-
-      },
-
-      error: (err) => {
-        console.log(err);
+        // LIMPIAR FORMULARIO
+        this.encuesta = {
+          alias: '',
+          edad: '',
+          rol: '',
+          videojuego: '',
+          plataforma: '',
+          genero: '',
+          comentario: ''
+        };
+      } else {
+        throw new Error('No se pudo guardar');
       }
 
-    });
-
+    } catch (error) {
+      console.error('Error detallado:', error);
+      const toast = await this.toastController.create({
+        message: 'Error al conectar con Firebase',
+        duration: 2000,
+        color: 'danger'
+      });
+      await toast.present();
+    }
   }
-
-  selectGame(game: any) {
-
-    this.selectedGame = game;
-
-    console.log('Juego seleccionado:', game);
-
-  }
-
-  saveSurvey() {
-
-    const surveyData = {
-
-      alias: this.survey.alias,
-
-      edad: this.survey.edad,
-
-      rol: this.survey.rol,
-
-      comentario: this.survey.comentario,
-
-      videojuego: this.selectedGame?.title,
-
-      genero: this.selectedGame?.genre,
-
-      plataforma: this.selectedGame?.platform,
-
-      imagen: this.selectedGame?.thumbnail,
-
-      descripcion: this.selectedGame?.short_description,
-
-      fecha: new Date()
-
-    };
-
-    console.log('Encuesta guardada:', surveyData);
-
-  }
-
 }
