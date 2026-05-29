@@ -19,6 +19,8 @@ from './app/app.component';
 import { defineCustomElements }
 from '@ionic/pwa-elements/loader';
 
+import { provideHttpClient } from '@angular/common/http'
+
 bootstrapApplication(
 
   AppComponent,
@@ -34,7 +36,8 @@ bootstrapApplication(
 
       provideIonicAngular(),
 
-      provideRouter(routes)
+      provideRouter(routes),
+      provideHttpClient()
 
     ]
 

@@ -7,11 +7,17 @@ import { Observable } from 'rxjs';
 })
 export class GameService {
 
-  private apiUrl = 'https://www.freetogame.com/api/games';
+  private apiUrl =
+    'https://www.freetogame.com/api/games';
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) {}
 
   getGames(): Observable<any> {
-    return this.http.get(this.apiUrl);
+
+    return this.http.get<any>(this.apiUrl);
+
   }
+
 }
