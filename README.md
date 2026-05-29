@@ -1,54 +1,178 @@
-# 📍 App GPS con Ionic + Angular + Supabase
+# 🎮 Game Survey Campus
 
-Aplicación móvil desarrollada con **Ionic + Angular** que permite iniciar sesión mediante **Supabase**, obtener la ubicación actual del dispositivo usando el GPS, guardar las coordenadas en **Firebase** y visualizar la ubicación en **Google Maps**.
-
----
-
-## 🚀 Tecnologías utilizadas
-
-- Ionic Framework
-- Angular
-- Supabase (Autenticación)
-- Firebase
-- Capacitor Geolocation
-- Google Maps
-- TypeScript
+Aplicación móvil desarrollada con Ionic + Angular para registrar encuestas sobre videojuegos favoritos dentro del campus universitario.
 
 ---
 
-## 📱 Funcionalidades
+# 📱 Descripción
 
-✅ Inicio de sesión con Supabase  
-✅ Obtención de coordenadas GPS  
-✅ Solicitud de permisos de ubicación  
-✅ Almacenamiento de coordenadas en Firebase  
-✅ Visualización de latitud y longitud  
-✅ Apertura de ubicación en Google Maps  
-✅ Compatible con navegador y dispositivos móviles
+Game Survey Campus es una aplicación móvil que permite realizar encuestas a estudiantes, docentes y personal administrativo sobre sus videojuegos favoritos.
+
+La aplicación integra:
+
+* autenticación,
+* consumo de API,
+* geolocalización GPS,
+* cámara,
+* almacenamiento en Firebase/Supabase,
+* y visualización de registros.
 
 ---
 
-## ⚙️ Instalación
+# 🖼️ Logo de la Aplicación
 
-Clonar repositorio:
+Agregar aquí el logo oficial de la app.
 
-```bash
-git clone URL_DEL_REPOSITORIO
+```md
+![Logo](ruta-del-logo)
 ```
 
-Ingresar al proyecto:
+---
+
+# 🚀 Tecnologías utilizadas
+
+* Ionic Framework
+* Angular
+* TypeScript
+* Capacitor
+* Firebase
+* Supabase
+* FreeToGame API
+
+---
+
+# 🎯 Funcionalidades principales
+
+## 🔐 Sistema de autenticación
+
+* Registro de usuarios
+* Inicio de sesión
+* Persistencia de sesión
+* Cierre de sesión
+
+---
+
+## 🎮 API de videojuegos
+
+Consumo de FreeToGame API para obtener:
+
+* nombre del videojuego,
+* descripción,
+* género,
+* plataforma,
+* imágenes,
+* información adicional.
+
+---
+
+## 📝 Formulario de encuestas
+
+Registro de:
+
+* Alias o nombre
+* Edad
+* Rol
+* Comentario
+* Videojuego favorito
+
+---
+
+## 📍 GPS y Geolocalización
+
+La aplicación permite:
+
+* obtener latitud y longitud,
+* registrar ubicación actual,
+* mostrar coordenadas del usuario.
+
+---
+
+## 📸 Cámara
+
+La app permite:
+
+* tomar fotografías,
+* seleccionar imágenes desde galería,
+* guardar evidencias visuales.
+
+---
+
+## 📊 Registro de publicaciones
+
+Visualización de:
+
+* encuestas registradas,
+* videojuegos seleccionados,
+* imágenes y comentarios.
+
+---
+
+# 🌐 API utilizada
+
+## FreeToGame API
+
+https://www.freetogame.com/api-doc
+
+### Endpoint utilizado
 
 ```bash
-cd nombre-proyecto
+https://www.freetogame.com/api/games
 ```
 
-Instalar dependencias:
+---
+
+# 📂 Estructura del proyecto
+
+```bash
+src/app/
+│
+├── home/
+│
+├── pages/
+│   ├── games/
+│   ├── encuesta/
+│   ├── login/
+│   ├── registros/
+│   ├── camara/
+│   └── ubicacion/
+│
+├── services/
+│   ├── firebase.service.ts
+│   ├── game.service.ts
+│   ├── game.service.spec.ts
+│   ├── location.ts
+│   ├── photo.ts
+│   ├── photo.spec.ts
+│   ├── supabase.service.ts
+│   └── supabase.service.spec.ts
+│
+├── app.routes.ts
+├── app.config.ts
+│
+└── environments/
+```
+
+---
+
+# ⚙️ Instalación
+
+## Clonar repositorio
+
+```bash
+git clone https://github.com/TU_USUARIO/TU_REPOSITORIO.git
+```
+
+---
+
+## Instalar dependencias
 
 ```bash
 npm install
 ```
 
-Ejecutar proyecto:
+---
+
+## Ejecutar proyecto
 
 ```bash
 ionic serve
@@ -56,87 +180,116 @@ ionic serve
 
 ---
 
-## 📂 Estructura principal
+# 📦 Generar APK
 
 ```bash
-src/
-│
-├── app/
-│   ├── home/
-│   ├── login/
-│   ├── services/
-│   │     ├── supabase.service.ts
-│   │     └── firebase.service.ts
-│
-├── assets/
+ionic build
+npx cap sync android
 ```
 
 ---
 
-## 🔐 Inicio de sesión
+## Abrir Android Studio
 
-La aplicación utiliza Supabase para autenticar usuarios y obtener el usuario actualmente conectado.
-
----
-
-## 📍 Funcionamiento del GPS
-
-La aplicación:
-
-1. Solicita permisos de ubicación
-2. Obtiene latitud y longitud
-3. Guarda los datos en Firebase
-4. Muestra coordenadas
-5. Abre la ubicación en Google Maps
+```bash
+npx cap open android
+```
 
 ---
 
-# 📷 Capturas de pantalla
-
-## Icono de la aplicación
-
-(![Icono](https://raw.githubusercontent.com/WilmerRamos21/taller_apps_moviles/main/icono.jpg))
+# 📷 Capturas del proyecto
 
 ---
 
-## Splash Screen
+# 🚀 Splash Screen
 
-![Splash Screen](https://raw.githubusercontent.com/WilmerRamos21/taller_apps_moviles/main/splash-screen.jpeg)
+Agregar captura del Splash Screen.
 
----
-
-## Inicio de sesión
-
-![Login](https://github.com/WilmerRamos21/taller_apps_moviles/blob/main/login.jpeg)
+```md
+![Splash](ruta-imagen)
+```
 
 ---
 
-## Pantalla principal
+# 🔐 Pantalla de Login
 
-![Pantalla Inicial](https://raw.githubusercontent.com/WilmerRamos21/taller_apps_moviles/main/pantalla_inicial.jpeg)
+Agregar captura de la pantalla de login.
 
----
-
-## Coordenadas obtenidas
-
-![Coordenadas](https://raw.githubusercontent.com/WilmerRamos21/taller_apps_moviles/main/coordenadas.jpeg)
+```md
+![Login](ruta-imagen)
+```
 
 ---
 
-## Ubicación en Google Maps
+# 🏠 Pantalla Principal
 
-![Google Maps](https://raw.githubusercontent.com/WilmerRamos21/taller_apps_moviles/main/google_maps.jpeg)
+Agregar captura de la pantalla principal.
+
+```md
+![Home](ruta-imagen)
+```
 
 ---
-Link del APK
-https://epnecuador-my.sharepoint.com/:u:/g/personal/edison_escobar01_epn_edu_ec/IQCoGsZuNct6SaDl2o6NvudvAYNWwXyy8-ISjBdQRH8l4Hs?e=Q0Fn9g
+
+# 📍 Pantalla GPS
+
+Agregar captura de geolocalización.
+
+```md
+![GPS](ruta-imagen)
+```
+
 ---
 
-## 👨‍💻 Integrantes
+# 📝 Formulario de Encuesta
 
-Wilmer Ramos
---
-Nicolas Chiguano 
---
-Gabriel Escobar
---
+Agregar captura del formulario.
+
+```md
+![Formulario](ruta-imagen)
+```
+
+---
+
+# 📸 Pantalla de Cámara
+
+Agregar captura de cámara.
+
+```md
+![Camara](ruta-imagen)
+```
+
+---
+
+# 🎮 Pantalla de Videojuegos
+
+Agregar captura del consumo de API.
+
+```md
+![Videojuegos](ruta-imagen)
+```
+
+---
+
+# 📊 Pantalla de Registros
+
+Agregar captura de publicaciones o registros.
+
+```md
+![Registros](ruta-imagen)
+```
+
+---
+
+# 👥 Integrantes
+
+* Gabriel Escobar
+* Nombre compañero
+
+---
+
+# 📄 Licencia
+
+Proyecto académico desarrollado para la materia Desarrollo de Aplicaciones Móviles.
+
+Escuela de Formación de Tecnólogos.
