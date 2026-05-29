@@ -24,7 +24,7 @@ La aplicación integra:
 Agregar aquí el logo oficial de la app.
 
 
-![Logo](![Logo](https://raw.githubusercontent.com/GabrielEsc23/Examen1_Aplicaciones_Moviles/main/Capturas_APP_Examen/logo2.png))
+![Logo](https://raw.githubusercontent.com/GabrielEsc23/Examen1_Aplicaciones_Moviles/main/Capturas_APP_Examen/logo2.png)
 
 
 ---
