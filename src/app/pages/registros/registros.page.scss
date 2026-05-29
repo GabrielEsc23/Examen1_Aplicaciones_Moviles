@@ -1,125 +1,121 @@
-.camera-content {
-
-  --background:
-    linear-gradient(
-      135deg,
-      #0f172a,
-      #1e3a8a
-    );
-
+.registros-content {
+  // Fondo degradado igual a las otras páginas
+  --background: linear-gradient(
+    135deg,
+    #0f172a,
+    #1e3a8a
+  );
 }
 
 .custom-toolbar {
-
   --background: transparent;
-
   --color: white;
-
 }
 
 .container {
-
   padding: 20px;
-
 }
 
 .welcome-section {
-
   text-align: center;
-
   margin-top: 30px;
-
   margin-bottom: 30px;
-
 }
 
 .main-icon {
-
-  font-size: 90px;
-
+  font-size: 80px;
   color: #60a5fa;
-
 }
 
 .welcome-section h1 {
-
   color: white;
-
-  font-size: 30px;
-
+  font-size: 28px;
   font-weight: bold;
-
-  margin-top: 10px;
-
 }
 
 .welcome-section p {
-
   color: #dbeafe;
-
-  font-size: 15px;
-
 }
 
-.main-card,
-.photo-card {
-
+/* Estilo Glassmorphism para las Cards de los registros */
+.registro-card {
   border-radius: 22px;
-
-  background:
-    rgba(255,255,255,0.12);
-
+  background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(10px);
-
-  box-shadow:
-    0 4px 20px rgba(0,0,0,0.3);
-
-  margin-bottom: 20px;
-
-}
-
-.camera-btn {
-
-  --background: #3b82f6;
-
-  --border-radius: 15px;
-
-  height: 52px;
-
-  font-size: 16px;
-
-  font-weight: bold;
-
-}
-
-.camera-btn ion-icon {
-
-  font-size: 22px;
-
-}
-
-.photo-card {
-
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  margin-bottom: 25px;
   overflow: hidden;
-
-  padding: 8px;
-
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
 }
 
-.photo-preview {
-
+.registro-card ion-img {
   width: 100%;
-
-  border-radius: 18px;
-
-  display: block;
-
+  height: 220px;
   object-fit: cover;
-
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-ion-card-content {
+.registro-card ion-card-title {
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-  padding: 16px;
+.registro-card ion-card-subtitle {
+  color: #60a5fa;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 
+/* Estilo para los items internos de la card */
+.info-item {
+  --background: transparent;
+  --color: white;
+  --padding-start: 0;
+  margin-bottom: 5px;
+
+  ion-icon {
+    color: #60a5fa;
+    font-size: 20px;
+  }
+
+  h3 {
+    color: white;
+    font-size: 16px;
+    margin: 0;
+  }
+
+  p {
+    color: #dbeafe;
+    font-size: 14px;
+    margin: 0;
+  }
+}
+
+.comentario-box {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  .comentario-text {
+    color: #dbeafe;
+    font-style: italic;
+    margin: 0;
+  }
+}
+
+.plataforma-badge {
+  margin-top: 15px;
+  --background: #3b82f6;
+  --padding-top: 5px;
+  --padding-bottom: 5px;
+  font-weight: bold;
 }
